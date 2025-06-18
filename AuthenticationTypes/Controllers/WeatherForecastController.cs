@@ -21,7 +21,7 @@ namespace AuthenticationTypes.Controllers
 
 
         [HttpGet(Name = "GetWeatherForecast")]
-        [Authorize]   //Uncoment this if you are working on Basic authentication
+        //[Authorize]   //Uncoment this if you are working on Basic authentication
         public IEnumerable<WeatherForecast> Get()
         {
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
