@@ -4,7 +4,7 @@
     {
         private readonly RequestDelegate _next;
         private const string ApiKeyHeaderName = "X-Api-Key";
-        private const string ApiKey = "MySecretApiKey"; // replace with your actual APIKEy;
+        private const string ApiKey = "apexsharptechnologies";
         public ApiKeyHandler(RequestDelegate next)
         {
             _next = next;
@@ -15,17 +15,17 @@
 
             if (!context.Request.Headers.TryGetValue(ApiKeyHeaderName, out var extractedApiKey))
             {
-                context.Response.StatusCode = 401; //Unauthorized
+                context.Response.StatusCode = 401; 
                 await context.Response.WriteAsync("API key is missing");
                 return;
             }
             if (!ApiKey.Equals(extractedApiKey))
             {
-                context.Response.StatusCode = 403; //Forbidden
+                context.Response.StatusCode = 403;
                 await context.Response.WriteAsync("Invalid API key");
                 return;
             }
-            await _next(context);  //call the next middleware
+            await _next(context); 
         }
     }
 }
